@@ -1,5 +1,8 @@
 namespace SensorDataGenerator.Domain.Models;
 
+/// <summary>
+/// Domain model representing a single sound sensor reading.
+/// </summary>
 public record SoundReading(
 
     DateTimeOffset TimeStamp,

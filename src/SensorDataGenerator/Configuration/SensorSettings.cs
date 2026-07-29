@@ -1,38 +1,29 @@
 namespace SensorDataGenerator.Configuration;
 
-public class SensorSettings()
+/// <summary>
+/// Root application configuration for sensor simulation and output behavior.
+/// </summary>
+public class SensorSettings
 {
-    public int IntervalMilliseconds {get; set;} = 2000;
+    public int IntervalMilliseconds { get; set; } = 2000;
 
-    public WeatherSettings WeatherSensor {get; set;} = new();
-    public ElectricalSettings ElectricalSensor {get; set;} = new();
+    public List<SensorInstanceSettings> Sensors { get; set; } = new();
 
-    public SoundSettings SoundSensor {get; set;} = new();
+    public WeatherSettings Weather { get; set; } = new();
+    public SoundSettings Sound { get; set; } = new();
+    public ElectricalSettings Electrical { get; set; } = new();
+    public PhSettings Ph { get; set; } = new();
+    public OrpSettings Orp { get; set; } = new();
+    public ConductivitySettings Conductivity { get; set; } = new();
+    public ChemicalConcentrationSettings ChemicalConcentration { get; set; } = new();
+    public SpectroscopicSettings Spectroscopic { get; set; } = new();
+    public DissolvedOxygenSettings DissolvedOxygen { get; set; } = new();
+    public ToxicGasSettings ToxicGas { get; set; } = new();
+    public CombustibleGasSettings CombustibleGas { get; set; } = new();
+    public PhotoionizationSettings Photoionization { get; set; } = new();
+    public LevelSettings Level { get; set; } = new();
+    public MassFlowSettings MassFlow { get; set; } = new();
+    public LoadCellSettings LoadCell { get; set; } = new();
 
-}
-
-public class WeatherSettings()
-{
-    public double MinTemp {get; set;} = 18.0;
-    public double MaxTemp {get; set;} = 28.0;
-
-    public double MinHumidity {get; set;} = 30.0;
-    public double MaxHumidity {get; set;} = 70.0;
-
-    public double BasePressure {get; set; } = 1013.25;   
-}
-
-public class ElectricalSettings()
-{
-    public double NomincalVoltage {get; set;} = 120.0;
-    public double VoltageVariance {get; set;} = 5.0;    // +/- 3 Volts
-
-    public double MinAmps {get; set;} = 0.5;
-    public double MaxAmps {get; set;} = 12.0; 
-}
-
-public class SoundSettings()
-{
-    public double MinDecibals {get; set; } = 35.0;
-    public double MaxDecibals {get; set; } = 85.0;
+    public OutputSettings Output { get; set; } = new();
 }

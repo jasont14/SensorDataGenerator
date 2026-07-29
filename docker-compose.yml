@@ -1,0 +1,25 @@
+services:
+  sensor-generator:
+    build: .
+    image: sensor-data-generator:latest
+    container_name: sensor-generator
+    ports:
+      - "5000:8080"
+    environment:
+      Serilog__MinimumLevel__Default: "${LOG_LEVEL:-Information}"
+      SensorSettings__Output__Mqtt__Host: "${MQTT_HOST:-localhost}"
+      SensorSettings__Output__Mqtt__Port: "${MQTT_PORT:-1883}"
+      SensorSettings__Output__Mqtt__Username: "${MQTT_USERNAME:-}"
+      SensorSettings__Output__Mqtt__Password: "${MQTT_PASSWORD:-}"
+      SensorSettings__Output__Mqtt__ClientId: "${MQTT_CLIENT_ID:-SensorDataGenerator}"
+      SensorSettings__Output__Mqtt__TopicPrefix: "${MQTT_TOPIC_PREFIX:-sensors}"
+      SensorSettings__Output__Mqtt__UseTls: "${MQTT_USE_TLS:-false}"
+      SensorSettings__Output__Mqtt__KeepAliveSeconds: "${MQTT_KEEPALIVE:-30}"
+      SensorSettings__Output__Mqtt__ReconnectDelaySeconds: "${MQTT_RECONNECT_DELAY:-5}"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
