@@ -39,7 +39,7 @@ echo 'MQTT_PASSWORD=your-secret' > .env
 docker compose up -d
 
 # Verify
-curl http://localhost:8080/healthz
+curl http://localhost:5000/healthz
 ```
 
 ## Configuration
