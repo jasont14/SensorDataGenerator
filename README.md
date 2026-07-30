@@ -1,7 +1,32 @@
 # SensorDataGenerator
 
-A .NET 10 industrial/environmental sensor simulator that generates random-but-realistic
-readings for 15+ sensor types and dispatches them to console, file, or MQTT.
+A .NET 10 sensor data simulator for testing IoT pipelines without real hardware.
+Generates realistic readings for 15+ industrial and environmental sensor types
+(weather, pH, ORP, dissolved oxygen, toxic gas, load cell, spectroscopic/FTIR,
+and more) and streams them to console, file, or MQTT.
+
+Useful for testing MQTT brokers, Grafana dashboards, Kafka consumers, or any
+downstream pipeline that expects sensor telemetry — no physical sensors required.
+
+## Example Output
+
+\```json
+{
+  "sensorId": "ph-01",
+  "sensorType": "Ph",
+  "timestamp": "2026-07-30T14:22:01Z",
+  "value": 7.42,
+  "unit": "pH"
+}
+\```
+
+## Features
+
+- 15+ sensor types with configurable, realistic bounds
+- Console, file, and MQTT output — all three can run simultaneously
+- MQTT sink with bounded-channel buffering, auto-reconnect, and backpressure handling
+- Built-in `/healthz` endpoint reporting Healthy / Degraded / Unhealthy states
+- Docker and docker-compose ready
 
 ## Quick Start
 
