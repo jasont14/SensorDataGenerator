@@ -10,7 +10,7 @@ downstream pipeline that expects sensor telemetry — no physical sensors requir
 
 ## Example Output
 
-\```json
+```json
 {
   "sensorId": "ph-01",
   "sensorType": "Ph",
@@ -18,7 +18,7 @@ downstream pipeline that expects sensor telemetry — no physical sensors requir
   "value": 7.42,
   "unit": "pH"
 }
-\```
+```
 
 ## Features
 
